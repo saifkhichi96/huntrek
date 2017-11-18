@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">HunTrek</string>
+    <string name="map_style_json" />
 </resources>
