@@ -63,7 +63,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="5">
 
-                <com.mapbox.mapboxsdk.maps.MapView
+                <com.aspirasoft.huntrek.view.GameMapView
                     android:id="@+id/map"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -73,6 +73,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:background="@drawable/overlay_sky" />
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/playerIcon"
+                    android:layout_width="128dp"
+                    android:layout_height="180dp"
+                    android:layout_centerInParent="true"
+                    android:scaleType="fitCenter" />
 
             </RelativeLayout>
 
@@ -85,14 +92,6 @@
             android:background="#442e4482"
             android:scaleType="centerCrop"
             android:src="@drawable/env_fog" />
-
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/playerIcon"
-            android:layout_width="128dp"
-            android:layout_height="180dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:scaleType="fitCenter" />
 
     </RelativeLayout>
 
