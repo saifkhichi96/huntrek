@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">HunTrek</string>
-    <string name="map_style_json" />
+    <string name="game_name">HunTrek</string>
+
+    <string name="mapbox_token">pk.eyJ1Ijoic2FpZmtoaWNoaTk2IiwiYSI6ImNqYnIwNnhsbDBtaWIzM3J0YXJjY3JiMGcifQ.sw44df657mub4lHohVyabA</string>
+    <string name="mapbox_style_day">mapbox://styles/saifkhichi96/cjbr0gw688ba42rs74zg3mc9p</string>
+    <string name="mapbox_style_night">mapbox://styles/saifkhichi96/cjbs0qca999072qqk62xrtote</string>
 </resources>

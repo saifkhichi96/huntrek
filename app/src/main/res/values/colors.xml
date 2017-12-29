@@ -3,4 +3,15 @@
     <color name="colorPrimary">#C5C78F</color>
     <color name="colorPrimaryDark">#a3a56e</color>
     <color name="colorAccent">#0c6e99</color>
+    <color name="colorGrayDark">#656565</color>
+
+    <color name="colorDawn">#c2dbea</color>
+    <color name="colorDay">#FCD440</color>
+    <color name="colorDusk">#ff6666</color>
+    <color name="colorNight">#2e4482</color>
+
+    <color name="overlayDawn">#44c2dbea</color>
+    <color name="overlayDay">#22FCD440</color>
+    <color name="overlayDusk">#22ff6666</color>
+    <color name="overlayNight">#442e4482</color>
 </resources>

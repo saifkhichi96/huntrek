@@ -1,0 +1,198 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="5"
+            tools:context=".ActivityHunt">
+
+            <RelativeLayout
+                android:id="@+id/skybox"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/colorDawn">
+
+                <ImageView
+                    android:id="@+id/cloud_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/env_cloud_1" />
+
+                <ImageView
+                    android:id="@+id/cloud_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/env_cloud_3" />
+
+                <ImageView
+                    android:id="@+id/cloud_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitEnd"
+                    android:src="@drawable/env_cloud_2" />
+
+                <View
+                    android:id="@+id/skyOverlay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/env_fog" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/overlay_horizon" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/map_container"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5">
+
+                <com.mapbox.mapboxsdk.maps.MapView
+                    android:id="@+id/map"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    mapbox:mapbox_styleUrl="@string/mapbox_style_day" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:background="@drawable/overlay_sky" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/lightOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#442e4482"
+            android:scaleType="centerCrop"
+            android:src="@drawable/env_fog" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/playerIcon"
+            android:layout_width="175dp"
+            android:layout_height="175dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitCenter" />
+
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/pause_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:background="#00000000"
+        android:onClick="toggleOverview"
+        android:scaleType="fitCenter"
+        android:src="@drawable/button_hunt_map" />
+
+    <LinearLayout
+        android:id="@+id/game_controls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:baselineAligned="true"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:padding="0dp"
+        android:weightSum="2">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="start|center_vertical">
+
+            <TextView
+                android:id="@+id/chests"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/button_metallic"
+                android:gravity="center_vertical|end"
+                android:paddingRight="25dp"
+                android:paddingTop="10dp"
+                android:text="0 / 5"
+                android:textColor="#363a34"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_treasure_chests" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end|center_vertical">
+
+            <TextView
+                android:id="@+id/score"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/button_metallic_rtl"
+                android:gravity="center_vertical|start"
+                android:paddingLeft="25dp"
+                android:paddingTop="10dp"
+                android:text="9999"
+                android:textColor="#363a34"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_alignParentRight="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_coins" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <com.aspirasoft.huntrek.view.GameStartProgressScreen
+        android:id="@+id/loadingScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.aspirasoft.huntrek.view.LoadingScreen
+        android:id="@+id/pauseScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+</RelativeLayout>
