@@ -41,7 +41,7 @@ public class GamePlayerView {
 
         this.mSimpleDraweeView.setImageURI(new Uri.Builder()
                 .scheme(UriUtil.LOCAL_RESOURCE_SCHEME) // "res"
-                .path(String.valueOf(R.drawable.character_dad))
+                .path(String.valueOf(R.drawable.character_kid))
                 .build());
     }
 
