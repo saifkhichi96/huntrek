@@ -1,7 +1,7 @@
 package com.aspirasoft.huntrek.bo.maps;
 
 import android.location.Location;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 
 public interface LocationReceiver {

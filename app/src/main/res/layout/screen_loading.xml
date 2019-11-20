@@ -19,7 +19,7 @@
         android:fontFamily="sans-serif-condensed"
         android:text="Loading ..."
         android:textAllCaps="true"
-        android:textColor="@color/colorGrayDark"
+        android:textColor="@color/grey_700"
         android:textSize="24sp"
         android:textStyle="bold" />
 

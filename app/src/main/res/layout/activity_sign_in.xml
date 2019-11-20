@@ -1,0 +1,158 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/main_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_auth"
+                android:theme="@style/GameTheme.Dark">
+
+  <!-- Overlay -->
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@drawable/overlay_auth_screen"/>
+
+  <!-- Header -->
+  <LinearLayout
+      android:id="@+id/header"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      android:layout_marginTop="@dimen/activity_margin_top"
+      android:gravity="center"
+      android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_logo"
+        android:tint="#FFF"/>
+
+  </LinearLayout>
+
+  <!-- Get Started -->
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_below="@id/header"
+      android:layout_marginBottom="@dimen/activity_vertical_margin"
+      android:layout_marginLeft="@dimen/activity_horizontal_margin"
+      android:layout_marginRight="@dimen/activity_horizontal_margin"
+      android:layout_marginTop="@dimen/activity_vertical_margin"
+      android:fitsSystemWindows="true"
+      android:gravity="center_horizontal|bottom"
+      android:orientation="vertical">
+
+    <!-- Sign In / Sign Up -->
+    <LinearLayout
+        android:id="@+id/loginViews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/hint_phone_number"
+          android:textColorHint="#EEE">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/field_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_phone_number"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_phone_number"
+            android:inputType="phone"
+            android:textColor="#FFF"/>
+
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <Button
+          android:id="@+id/buttonStartVerification"
+          android:layout_width="match_parent"
+          android:layout_height="40dp"
+          android:background="@drawable/btn_general"
+          android:text="@string/start_phone_auth"
+          android:textColor="#FFF"/>
+
+    </LinearLayout>
+
+    <!-- Verify Phone -->
+    <LinearLayout
+        android:id="@+id/verificationViews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/hint_verification_code"
+          android:textColorHint="#EEE">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/field_verification_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_verify"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_verify"
+            android:inputType="number"
+            android:textColor="#FFF"/>
+
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <Button
+          android:id="@+id/buttonVerifyPhone"
+          android:layout_width="match_parent"
+          android:layout_height="40dp"
+          android:layout_marginBottom="8dp"
+          android:background="@drawable/btn_general"
+          android:text="@string/verify_phone_auth"
+          android:textColor="#FFF"/>
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/check_phone_auth"
+          android:textSize="12sp"/>
+
+      <TextView
+          android:id="@+id/linkResend"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/resend_phone_auth"
+          android:textColor="#FFF"/>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/carrier_charges"
+        android:textSize="12sp"/>
+
+  </LinearLayout>
+
+  <RelativeLayout
+      android:id="@+id/waitingViews"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="#88000000"
+      android:visibility="gone">
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"/>
+
+  </RelativeLayout>
+
+</RelativeLayout>

@@ -2,8 +2,8 @@
 <resources>
     <color name="colorPrimary">#C5C78F</color>
     <color name="colorPrimaryDark">#a3a56e</color>
-    <color name="colorAccent">#0c6e99</color>
-    <color name="colorGrayDark">#656565</color>
+    <color name="colorAccent">#880E4F</color>
+    <color name="colorAccentLight">#BE2568</color>
 
     <color name="colorDawn">#c2dbea</color>
     <color name="colorDay">#FCD440</color>
@@ -14,4 +14,12 @@
     <color name="overlayDay">#22FCD440</color>
     <color name="overlayDusk">#22ff6666</color>
     <color name="overlayNight">#442e4482</color>
+
+    <!-- Shades of Grey -->
+    <color name="grey_100">#F5F5F5</color>
+    <color name="grey_300">#E0E0E0</color>
+    <color name="grey_700">#656565</color>
+
+    <color name="colorFacebook">#3b5998</color>
+    <color name="colorFacebookLight">#4C6AA9</color>
 </resources>

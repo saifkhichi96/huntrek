@@ -4,16 +4,12 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.widget.Toast;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 class ProviderTracker {
 
@@ -47,14 +43,14 @@ class ProviderTracker {
         availableProviders.add(provider);
         providerAccuracy.put(provider, -1.f);
 
-        Log.i("App/ProviderTracker", "Registered " + provider + " location provider.");
+        Log.i("HuntItApp/ProviderTracker", "Registered " + provider + " location provider.");
     }
 
     void unregisterProvider(String provider) {
         availableProviders.remove(provider);
         providerAccuracy.remove(provider);
 
-        Log.i("App/ProviderTracker", "Unregistered " + provider + " location provider.");
+        Log.i("HuntItApp/ProviderTracker", "Unregistered " + provider + " location provider.");
 
         if (provider.equals(this.activeProvider)) {
             this.activeProvider = chooseBestProvider();
@@ -73,11 +69,11 @@ class ProviderTracker {
                     newBest = provider;
                 }
             } catch (NullPointerException ex) {
-                Log.e("App/ProviderTracker", Arrays.toString(ex.getStackTrace()));
+                Log.e("HuntItApp/ProviderTracker", Arrays.toString(ex.getStackTrace()));
             }
         }
         if (context != null && newBest != null && !newBest.equals(activeProvider)) {
-            Log.i("App/ProviderTracker", "Switched from " + oldBest + " to " + newBest + " location provider.");
+            Log.i("HuntItApp/ProviderTracker", "Switched from " + oldBest + " to " + newBest + " location provider.");
             Toast.makeText(context, "Switched to " + newBest + " location provider.", Toast.LENGTH_SHORT).show();
         }
         return newBest;
@@ -85,10 +81,10 @@ class ProviderTracker {
 
     void reportAccuracy(String reportingProvider, float providerAccuracy) {
         this.providerAccuracy.put(reportingProvider, providerAccuracy);
-        Log.i("App/ProviderTracker", reportingProvider + " provider is accurate to within " + String.valueOf(providerAccuracy) + "m");
+        Log.i("HuntItApp/ProviderTracker", reportingProvider + " provider is accurate to within " + providerAccuracy + "m");
 
         this.activeProvider = chooseBestProvider();
-        Log.i("App/ProviderTracker", this.activeProvider + " provider is active.");
+        Log.i("HuntItApp/ProviderTracker", this.activeProvider + " provider is active.");
     }
 
     void reportLocation(String reportingProvider, Location location) {

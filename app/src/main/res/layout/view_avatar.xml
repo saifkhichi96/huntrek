@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content">
+
+  <androidx.cardview.widget.CardView
+      android:id="@+id/avatar_card"
+      android:layout_width="70dp"
+      android:layout_height="70dp"
+      android:layout_gravity="center"
+      android:layout_marginLeft="5dp"
+      android:layout_marginStart="5dp"
+      android:innerRadius="0dp"
+      android:shape="ring"
+      android:thicknessRatio="1.0"
+      app:cardBackgroundColor="#88880E4F"
+      app:cardCornerRadius="35dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:innerRadius="0dp"
+        android:shape="ring"
+        android:thicknessRatio="1.0"
+        app:cardBackgroundColor="#8000"
+        app:cardCornerRadius="33dp">
+
+      <ImageView
+          android:id="@+id/avatar_image"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_alignBottom="@+id/imageView2"
+          android:layout_alignEnd="@+id/imageView2"
+          android:layout_alignRight="@+id/imageView2"
+          android:scaleType="fitCenter"
+          android:src="@drawable/character_kid"/>
+
+    </androidx.cardview.widget.CardView>
+  </androidx.cardview.widget.CardView>
+
+  <ProgressBar
+      android:id="@+id/xp_counter"
+      style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/avatar_card"
+      android:layout_marginLeft="10dp"
+      android:layout_marginStart="10dp"
+      android:max="100"
+      android:progress="30"/>
+
+  <TextView
+      android:id="@+id/user_name"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignLeft="@id/xp_counter"
+      android:layout_alignStart="@id/xp_counter"
+      android:layout_below="@id/xp_counter"
+      android:maxLength="25"
+      android:maxLines="1"
+      android:text="Muhammad Saif Ullah Khan"
+      android:textColor="#000"
+      android:textSize="12sp"
+      android:textStyle="bold"/>
+
+  <TextView
+      android:id="@+id/user_level"
+      android:layout_width="25dp"
+      android:layout_height="25dp"
+      android:layout_alignEnd="@id/xp_counter"
+      android:layout_alignRight="@id/xp_counter"
+      android:background="@drawable/btn_fb_normal"
+      android:elevation="2dp"
+      android:gravity="center"
+      android:maxLength="25"
+      android:maxLines="1"
+      android:text="5"
+      android:textColor="#FFF"
+      android:textSize="14sp"
+      android:textStyle="bold"/>
+
+</RelativeLayout>

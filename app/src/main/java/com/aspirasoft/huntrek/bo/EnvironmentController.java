@@ -2,9 +2,8 @@ package com.aspirasoft.huntrek.bo;
 
 import android.app.Activity;
 import android.view.View;
-
 import com.aspirasoft.huntrek.R;
-import com.aspirasoft.huntrek.utils.GameTimeListener;
+import com.aspirasoft.huntrek.listener.GameTimeListener;
 
 import java.util.Calendar;
 

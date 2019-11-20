@@ -3,8 +3,8 @@ package com.aspirasoft.huntrek.bo.maps;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
-import android.support.annotation.CallSuper;
 import android.util.Log;
+import androidx.annotation.CallSuper;
 
 class LocationTracker implements LocationListener {
 
@@ -19,7 +19,7 @@ class LocationTracker implements LocationListener {
     @Override
     @CallSuper
     public void onLocationChanged(Location location) {
-        Log.i("HunTrekGame/LocationTracker", "Update received from " + this.provider + " provider.");
+        Log.i("HuntItGame/LocationTracker", "Update received from " + this.provider + " provider.");
         providerTracker.reportAccuracy(this.provider, location.getAccuracy());
         providerTracker.reportLocation(this.provider, location);
     }

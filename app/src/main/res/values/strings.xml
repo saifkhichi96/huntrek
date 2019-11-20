@@ -1,7 +1,19 @@
 <resources>
-    <string name="game_name">HunTrek</string>
+    <string name="game_name">HuntIt</string>
 
-    <string name="mapbox_token">pk.eyJ1Ijoic2FpZmtoaWNoaTk2IiwiYSI6ImNqYnIwNnhsbDBtaWIzM3J0YXJjY3JiMGcifQ.sw44df657mub4lHohVyabA</string>
+    <string name="mapbox_token">
+        pk.eyJ1Ijoic2FpZmtoaWNoaTk2IiwiYSI6ImNqYnIwNnhsbDBtaWIzM3J0YXJjY3JiMGcifQ.sw44df657mub4lHohVyabA
+    </string>
     <string name="mapbox_style_day">mapbox://styles/saifkhichi96/cjbr0gw688ba42rs74zg3mc9p</string>
     <string name="mapbox_style_night">mapbox://styles/saifkhichi96/cjbs0qca999072qqk62xrtote</string>
+
+    <string name="hint_verification_code">Verification Code</string>
+    <string name="hint_phone_number">Phone number</string>
+    <string name="check_phone_auth">Did not receive the code?</string>
+    <string name="resend_phone_auth">Click here to resend</string>
+    <string name="carrier_charges">Standard carrier charges may apply</string>
+    <string name="instant_validation">Instant validation</string>
+    <string name="start_phone_auth">Get Started</string>
+    <string name="verify_phone_auth">Verify</string>
+    <string name="submit">Submit</string>
 </resources>
