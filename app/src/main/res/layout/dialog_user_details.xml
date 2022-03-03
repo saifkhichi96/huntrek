@@ -1,434 +1,425 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#f9f2bb">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f9f2bb">
 
-  <ScrollView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:scrollbars="none">
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="200dp"
-          android:background="@drawable/view_user_details_bg"
-          android:orientation="horizontal"
-          android:paddingTop="@dimen/activity_margin_top"
-          android:weightSum="2">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="@dimen/activity_horizontal_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-          <TextView
-              android:id="@+id/user_name"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Muhammad Saifullah Khan"
-              android:textColor="@color/grey_700"
-              android:textSize="16sp"
-              android:textStyle="bold"/>
-
-          <TextView
-              android:id="@+id/userEmail"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="saifkhichi96@gmail.com"
-              android:textColor="@color/grey_700"
-              android:textSize="12sp"/>
-
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/characterImage"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="@dimen/activity_horizontal_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_weight="1"
-            android:scaleType="centerInside"
-            android:src="@drawable/character_kid"/>
-
-      </LinearLayout>
-
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:gravity="center"
-          android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Level "
-              android:textAllCaps="true"
-              android:textColor="@color/colorAccentLight"
-              android:textSize="12sp"
-              android:textStyle="bold"/>
-
-          <TextView
-              android:id="@+id/user_level"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="5"
-              android:textAllCaps="true"
-              android:textColor="@color/colorAccent"
-              android:textSize="20sp"
-              android:textStyle="bold"/>
-
-        </LinearLayout>
-
-        <ProgressBar
-            android:id="@+id/userProgress"
-            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:max="5000"
-            android:progress="1200"/>
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-          <TextView
-              android:id="@+id/userXP"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="1200"
-              android:textAllCaps="true"
-              android:textColor="@color/colorAccent"
-              android:textSize="14sp"
-              android:textStyle="bold"/>
-
-          <TextView
-              android:id="@+id/targetXP"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text=" / 5000 XP"
-              android:textAllCaps="true"
-              android:textColor="@color/colorAccentLight"
-              android:textSize="14sp"
-              android:textStyle="bold"/>
-
-        </LinearLayout>
-
-      </LinearLayout>
-
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="75dp"
-          android:layout_marginTop="@dimen/activity_vertical_margin"
-          android:orientation="horizontal"
-          android:weightSum="3">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
             android:orientation="vertical">
 
-          <androidx.cardview.widget.CardView
-              android:layout_width="50dp"
-              android:layout_height="50dp"
-              android:innerRadius="0dp"
-              android:shape="ring"
-              android:thicknessRatio="1.0"
-              app:cardBackgroundColor="@color/colorPrimaryDark"
-              app:cardCornerRadius="25dp">
-
-            <ImageView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerInside"
-                android:src="@drawable/view_user_details_chests"/>
+                android:layout_height="200dp"
+                android:background="@drawable/view_user_details_bg"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/activity_margin_top"
+                android:weightSum="2">
 
-          </androidx.cardview.widget.CardView>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-          <TextView
-              android:id="@+id/chestsOpened"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="8"
-              android:textColor="@color/colorAccent"
-              android:textSize="11sp"/>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/grey_700"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:text="@tools:sample/full_names" />
 
-        </LinearLayout>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/userEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/grey_700"
+                        android:textSize="12sp"
+                        tools:text="@string/sample_email" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
+                </LinearLayout>
 
-          <androidx.cardview.widget.CardView
-              android:layout_width="50dp"
-              android:layout_height="50dp"
-              android:innerRadius="0dp"
-              android:shape="ring"
-              android:thicknessRatio="1.0"
-              app:cardBackgroundColor="@color/colorPrimaryDark"
-              app:cardCornerRadius="25dp">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/characterImage"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:layout_weight="1"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/character_kid" />
 
-            <ImageView
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerInside"
-                android:src="@drawable/veiw_user_details_coins"/>
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
 
-          </androidx.cardview.widget.CardView>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-          <TextView
-              android:id="@+id/coinsCollected"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="3.4K"
-              android:textColor="@color/colorAccent"
-              android:textSize="11sp"/>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_level"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorAccentLight"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
 
-        </LinearLayout>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/user_level"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:text="5" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
+                </LinearLayout>
 
-          <androidx.cardview.widget.CardView
-              android:layout_width="50dp"
-              android:layout_height="50dp"
-              android:innerRadius="0dp"
-              android:shape="ring"
-              android:thicknessRatio="1.0"
-              app:cardBackgroundColor="@color/colorPrimaryDark"
-              app:cardCornerRadius="25dp">
+                <ProgressBar
+                    android:id="@+id/userProgress"
+                    style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:max="5000"
+                    android:progress="1200" />
 
-            <ImageView
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/userXP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        tools:text="1200" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/targetXP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorAccentLight"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        tools:text=" / 5000 XP" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerInside"
-                android:src="@drawable/veiw_user_details_steps"/>
+                android:layout_height="75dp"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:weightSum="3">
 
-          </androidx.cardview.widget.CardView>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
-          <TextView
-              android:id="@+id/distanceWalked"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="N/A"
-              android:textColor="@color/colorAccent"
-              android:textSize="11sp"/>
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:innerRadius="0dp"
+                        android:shape="ring"
+                        android:thicknessRatio="1.0"
+                        app:cardBackgroundColor="@color/colorPrimaryDark"
+                        app:cardCornerRadius="25dp">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/view_user_details_chests" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/chestsOpened"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="11sp"
+                        tools:text="8" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:innerRadius="0dp"
+                        android:shape="ring"
+                        android:thicknessRatio="1.0"
+                        app:cardBackgroundColor="@color/colorPrimaryDark"
+                        app:cardCornerRadius="25dp">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/veiw_user_details_coins" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/coinsCollected"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="11sp"
+                        tools:text="3.4K" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:innerRadius="0dp"
+                        android:shape="ring"
+                        android:thicknessRatio="1.0"
+                        app:cardBackgroundColor="@color/colorPrimaryDark"
+                        app:cardCornerRadius="25dp">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/veiw_user_details_steps" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/distanceWalked"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="11sp"
+                        tools:text="N/A" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Section Break -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginBottom="@dimen/activity_vertical_margin">
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_centerVertical="true"
+                    android:alpha="0.5" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/TextAppearance.Material3.LabelSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="#f9f2bb"
+                    android:padding="10dp"
+                    android:text="@string/label_friends"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <!-- Social -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/TextAppearance.Material3.BodyMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:gravity="center"
+                    android:text="@string/social_connect_none"
+                    android:textColor="@color/colorAccentLight" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonFacebook"
+                    style="@style/Widget.Material3.Button.UnelevatedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_facebook"
+                    android:text="@string/label_connect_facebook"
+                    android:textColor="#FFF"
+                    app:backgroundTint="@color/colorFacebookLight" />
+
+            </LinearLayout>
+
+            <!-- Section Break -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginBottom="@dimen/activity_vertical_margin">
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_centerVertical="true"
+                    android:alpha="0.5" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="#f9f2bb"
+                    android:fontFamily="monospace"
+                    android:padding="10dp"
+                    android:text="@string/label_statistics"
+                    android:textAllCaps="true"
+                    android:textColor="@color/grey_700"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <!-- Stats -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/activity_margin_top">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#f9f2bb"
+                        android:padding="2dp"
+                        android:text="@string/label_user_since"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorAccentLight"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/userSince"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#f9f2bb"
+                        android:padding="2dp"
+                        android:text="@string/none"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorAccentLight"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#f9f2bb"
+                        android:padding="2dp"
+                        android:text="@string/label_total_xp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorAccentLight"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/totalXP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#f9f2bb"
+                        android:padding="2dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorAccentLight"
+                        android:textSize="13sp"
+                        tools:text="23432" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-      </LinearLayout>
+    </ScrollView>
 
-      <!-- Section Break -->
-      <RelativeLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginBottom="@dimen/activity_vertical_margin"
-          android:layout_marginTop="@dimen/activity_vertical_margin">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_centerVertical="true"
-            android:background="@color/grey_300"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="#f9f2bb"
-            android:fontFamily="monospace"
-            android:padding="10dp"
-            android:text="Friends"
-            android:textAllCaps="true"
-            android:textColor="@color/grey_700"
-            android:textSize="11sp"
-            android:textStyle="bold"/>
-
-      </RelativeLayout>
-
-      <!-- Social -->
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginLeft="@dimen/activity_horizontal_margin"
-          android:layout_marginRight="@dimen/activity_horizontal_margin"
-          android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:gravity="center"
-            android:text="You have not linked a social profile yet. Connect now to play with your friends."
-            android:textColor="@color/colorAccentLight"/>
-
-        <androidx.appcompat.widget.ButtonBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin">
-
-          <androidx.appcompat.widget.AppCompatButton
-              android:id="@+id/buttonFacebook"
-              android:layout_width="match_parent"
-              android:layout_height="40dp"
-              android:background="@drawable/btn_fb"
-              android:drawableLeft="@drawable/ic_facebook"
-              android:drawableStart="@drawable/ic_facebook"
-              android:paddingLeft="10dp"
-              android:paddingRight="10dp"
-              android:text="Connect to Facebook"
-              android:textColor="#FFF"/>
-
-        </androidx.appcompat.widget.ButtonBarLayout>
-
-      </LinearLayout>
-
-      <!-- Section Break -->
-      <RelativeLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginBottom="@dimen/activity_vertical_margin"
-          android:layout_marginTop="@dimen/activity_vertical_margin">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_centerVertical="true"
-            android:background="@color/grey_300"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="#f9f2bb"
-            android:fontFamily="monospace"
-            android:padding="10dp"
-            android:text="Stats"
-            android:textAllCaps="true"
-            android:textColor="@color/grey_700"
-            android:textSize="11sp"
-            android:textStyle="bold"/>
-
-      </RelativeLayout>
-
-      <!-- Stats -->
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginLeft="@dimen/activity_horizontal_margin"
-          android:layout_marginRight="@dimen/activity_horizontal_margin"
-          android:orientation="vertical"
-          android:paddingBottom="@dimen/activity_margin_top">
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:background="#f9f2bb"
-              android:padding="2dp"
-              android:text="Start Date: "
-              android:textAllCaps="true"
-              android:textColor="@color/colorAccentLight"
-              android:textSize="13sp"
-              android:textStyle="bold"/>
-
-          <TextView
-              android:id="@+id/userSince"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:background="#f9f2bb"
-              android:padding="2dp"
-              android:text="N/A"
-              android:textAllCaps="true"
-              android:textColor="@color/colorAccentLight"
-              android:textSize="13sp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:background="#f9f2bb"
-              android:padding="2dp"
-              android:text="Total XP: "
-              android:textAllCaps="true"
-              android:textColor="@color/colorAccentLight"
-              android:textSize="13sp"
-              android:textStyle="bold"/>
-
-          <TextView
-              android:id="@+id/totalXP"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:background="#f9f2bb"
-              android:padding="2dp"
-              android:text="24532"
-              android:textAllCaps="true"
-              android:textColor="@color/colorAccentLight"
-              android:textSize="13sp"/>
-
-        </LinearLayout>
-
-      </LinearLayout>
-
-    </LinearLayout>
-
-  </ScrollView>
-
-  <ImageButton
-      android:id="@+id/dismissButton"
-      android:layout_width="40dp"
-      android:layout_height="40dp"
-      android:layout_alignParentBottom="true"
-      android:layout_centerHorizontal="true"
-      android:layout_marginBottom="@dimen/activity_vertical_margin"
-      android:background="@drawable/btn_general_normal"
-      android:padding="5dp"
-      android:scaleType="fitCenter"
-      android:src="@android:drawable/ic_menu_close_clear_cancel"
-      android:tint="@color/colorPrimary"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/dismissButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:background="@drawable/btn_general_normal"
+        android:padding="5dp"
+        android:scaleType="fitCenter"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:tint="@color/colorPrimary" />
 
 </RelativeLayout>

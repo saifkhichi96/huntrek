@@ -1,9 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:mapbox="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context=".activity.ActivityHunt">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ActivityHunt">
 
     <RelativeLayout
         android:id="@+id/gameplay_view"
@@ -24,21 +24,21 @@
                 android:layout_weight="1"
                 android:background="@color/colorDawn">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/cloud_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitStart"
                     android:src="@drawable/env_cloud_1" />
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/cloud_3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitCenter"
                     android:src="@drawable/env_cloud_3" />
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/cloud_2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -51,7 +51,7 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/env_fog" />
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
@@ -68,8 +68,7 @@
                 <com.aspirasoft.huntrek.view.GameMapView
                     android:id="@+id/map"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    mapbox:mapbox_styleUrl="@string/mapbox_style_day" />
+                    android:layout_height="match_parent" />
 
                 <View
                     android:layout_width="match_parent"
@@ -87,7 +86,7 @@
 
         </LinearLayout>
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/lightOverlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -98,51 +97,52 @@
     </RelativeLayout>
 
     <FrameLayout
-        android:id="@+id/unity_player_view"
+        android:id="@+id/unityPlayerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/pause_button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_alignParentEnd="true"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_margin_top"
-        android:background="#00000000"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:onClick="toggleOverview"
         android:scaleType="fitCenter"
-        android:src="@drawable/button_resume_game"
-        android:visibility="gone"/>
+        android:padding="0dp"
+        android:visibility="gone"
+        app:icon="@drawable/button_resume_game"
+        app:iconSize="48dp"
+        app:iconTint="@null" />
 
     <com.aspirasoft.huntrek.view.AvatarView
         android:id="@+id/avatar"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_margin_top"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_margin_top"/>
+        android:layout_marginBottom="@dimen/activity_vertical_margin" />
 
-    <ImageButton
-        android:id="@+id/button_menu"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/settingsButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:background="@drawable/btn_general_normal"
-        android:padding="1dp"
+        android:padding="0dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/icon_key"/>
+        app:icon="@drawable/icon_key"
+        app:iconSize="48dp"
+        app:iconTint="@null" />
 
     <com.aspirasoft.huntrek.view.LoadingAnimation
         android:id="@+id/pauseScreen"
@@ -155,18 +155,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.UnelevatedButton"
             android:id="@+id/button_sign_out"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_margin_top"
-            android:background="@drawable/btn_general"
-            android:text="Sign Out"/>
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:text="@string/label_sign_out" />
 
     </com.aspirasoft.huntrek.view.GameStartingView>
 

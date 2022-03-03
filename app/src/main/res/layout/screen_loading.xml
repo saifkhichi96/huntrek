@@ -12,12 +12,12 @@
         android:layout_height="200dp"
         android:scaleType="fitCenter" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="Loading ..."
+        android:text="@string/loading"
         android:textAllCaps="true"
         android:textColor="@color/grey_700"
         android:textSize="24sp"

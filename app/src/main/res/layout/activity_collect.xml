@@ -1,81 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/white"
-                android:gravity="center"
-                android:orientation="vertical"
-                tools:context=".activity.ActivityCollect">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".activity.ActivityCollect">
 
-  <FrameLayout
-      android:id="@+id/unity_player_view"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"/>
+    <FrameLayout
+        android:id="@+id/unityPlayerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-  <Switch
-      android:id="@+id/ARSwitch"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignParentEnd="true"
-      android:layout_alignParentRight="true"
-      android:layout_alignParentTop="true"
-      android:layout_marginBottom="@dimen/activity_vertical_margin"
-      android:layout_marginLeft="@dimen/activity_horizontal_margin"
-      android:layout_marginRight="@dimen/activity_horizontal_margin"
-      android:layout_marginTop="@dimen/activity_margin_top"/>
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/ARSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_margin_top"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin" />
 
-  <ImageButton
-      android:id="@+id/button_escape"
-      android:layout_width="35dp"
-      android:layout_height="35dp"
-      android:layout_alignParentLeft="true"
-      android:layout_alignParentStart="true"
-      android:layout_alignParentTop="true"
-      android:layout_marginBottom="@dimen/activity_vertical_margin"
-      android:layout_marginLeft="@dimen/activity_horizontal_margin"
-      android:layout_marginRight="@dimen/activity_horizontal_margin"
-      android:layout_marginTop="@dimen/activity_margin_top"
-      android:background="@drawable/btn_general_normal"
-      android:onClick="escape"
-      android:padding="1dp"
-      android:scaleType="fitCenter"
-      android:src="@drawable/ic_action_run"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_escape"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_margin_top"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:background="@drawable/btn_general_normal"
+        android:onClick="escape"
+        android:padding="4dp"
+        android:scaleType="fitCenter"
+        app:backgroundTint="@color/colorAccent"
+        app:icon="@drawable/ic_action_run"
+        app:iconSize="32dp"
+        app:iconTint="@null" />
 
-  <ImageButton
-      android:id="@+id/button_menu"
-      android:layout_width="50dp"
-      android:layout_height="50dp"
-      android:layout_alignParentBottom="true"
-      android:layout_centerHorizontal="true"
-      android:layout_marginBottom="@dimen/activity_vertical_margin"
-      android:background="@drawable/btn_general_normal"
-      android:padding="1dp"
-      android:scaleType="fitCenter"
-      android:src="@drawable/icon_key"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/settingsButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:background="@drawable/btn_general_normal"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:icon="@drawable/icon_key"
+        app:iconSize="48dp"
+        app:iconTint="@null" />
 
-  <com.aspirasoft.huntrek.view.LoadingAnimation
-      android:id="@+id/pauseScreen"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:visibility="visible"/>
+    <com.aspirasoft.huntrek.view.LoadingAnimation
+        android:id="@+id/pauseScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible" />
 
-  <com.facebook.drawee.view.SimpleDraweeView
-      android:id="@+id/falling_coins"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:visibility="gone"/>
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/falling_coins"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
-  <TextView
-      android:id="@+id/coins_collected"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_centerInParent="true"
-      android:fontFamily="cursive"
-      android:text="Coins: 0"
-      android:textColor="#FFF"
-      android:textSize="64sp"
-      android:textStyle="bold"
-      android:visibility="gone"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/coins_collected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:fontFamily="cursive"
+        android:text="@string/label_coins"
+        android:textColor="#FFF"
+        android:textSize="64sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
 
 </RelativeLayout>

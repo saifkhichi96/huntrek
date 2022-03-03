@@ -1,140 +1,118 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:id="@+id/main_layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/bg_auth"
-                android:theme="@style/GameTheme.Dark">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_auth"
+    android:theme="@style/GameTheme.Dark">
 
-  <!-- Overlay -->
-  <View
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:background="@drawable/overlay_auth_screen"/>
-
-  <!-- Header -->
-  <LinearLayout
-      android:id="@+id/header"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_alignParentTop="true"
-      android:layout_marginTop="@dimen/activity_margin_top"
-      android:gravity="center"
-      android:orientation="vertical">
-
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+    <!-- Logo -->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:alpha="0.05"
         android:scaleType="centerInside"
         android:src="@drawable/ic_logo"
-        android:tint="#FFF"/>
+        android:tint="@color/overlayDawn" />
 
-  </LinearLayout>
-
-  <!-- Complete Profile -->
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_below="@id/header"
-      android:layout_marginBottom="@dimen/activity_vertical_margin"
-      android:layout_marginLeft="@dimen/activity_horizontal_margin"
-      android:layout_marginRight="@dimen/activity_horizontal_margin"
-      android:layout_marginTop="@dimen/activity_vertical_margin"
-      android:gravity="center"
-      android:orientation="vertical">
-
-    <com.google.android.material.textfield.TextInputLayout
+    <!-- Overlay -->
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="What should we call you?"
-        android:textColorHint="#EEE">
+        android:layout_height="match_parent"
+        android:alpha="0.85"
+        android:background="@drawable/overlay_auth_screen" />
 
-      <com.google.android.material.textfield.TextInputEditText
-          android:id="@+id/user_name"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:drawableLeft="@drawable/ic_name"
-          android:drawablePadding="10dp"
-          android:drawableStart="@drawable/ic_name"
-          android:inputType="textPersonName"
-          android:textColor="#FFF"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
+    <!-- Complete Profile -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Email address"
-        android:textColorHint="#EEE">
+        android:layout_height="match_parent"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_vertical_margin">
 
-      <com.google.android.material.textfield.TextInputEditText
-          android:id="@+id/userEmail"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:drawableLeft="@drawable/ic_email"
-          android:drawablePadding="10dp"
-          android:drawableStart="@drawable/ic_email"
-          android:inputType="textEmailAddress"
-          android:textColor="#FFF"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_name"
+            android:textColorHint="#EEE">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_name"
+                android:drawablePadding="8dp"
+                android:inputType="textPersonName"
+                android:textColor="#FFF" />
 
-    <Button
-        android:id="@+id/buttonSubmit"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/hint_email"
+            android:textColorHint="#EEE">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/userEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="8dp"
+                android:inputType="textEmailAddress"
+                android:textColor="#FFF" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/submit"
+            android:textColor="#FFF"
+            app:cornerRadius="16dp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            tools:text="or" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonFacebook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_facebook"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="@string/label_facebook_info"
+            android:textColor="#FFF"
+            app:backgroundTint="@color/colorFacebook"
+            app:cornerRadius="16dp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/waitingViews"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:background="@drawable/btn_general"
-        android:text="@string/submit"
-        android:textColor="#FFF"/>
+        android:layout_height="match_parent"
+        android:background="#88000000"
+        android:visibility="gone">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:textAllCaps="true"
-        android:textColor="#FFF"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        tools:text="or"/>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:indeterminate="true" />
 
-    <androidx.appcompat.widget.ButtonBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin">
-
-      <androidx.appcompat.widget.AppCompatButton
-          android:id="@+id/buttonFacebook"
-          android:layout_width="match_parent"
-          android:layout_height="40dp"
-          android:background="@drawable/btn_fb"
-          android:drawableLeft="@drawable/ic_facebook"
-          android:drawableStart="@drawable/ic_facebook"
-          android:paddingLeft="10dp"
-          android:paddingRight="10dp"
-          android:text="Use Facebook Info"
-          android:textColor="#FFF"/>
-
-    </androidx.appcompat.widget.ButtonBarLayout>
-
-  </LinearLayout>
-
-  <RelativeLayout
-      android:id="@+id/waitingViews"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:background="#88000000"
-      android:visibility="gone">
-
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:indeterminate="true"/>
-
-  </RelativeLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

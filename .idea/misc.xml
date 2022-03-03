@@ -3,7 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_hunt.xml" value="0.1203125" />
+        <entry key="app/src/main/res/drawable-anydpi/ic_action_close.xml" value="0.26974358974358975" />
+        <entry key="app/src/main/res/drawable/btn_fb.xml" value="0.26974358974358975" />
+        <entry key="app/src/main/res/drawable/btn_fb_normal.xml" value="0.26974358974358975" />
+        <entry key="app/src/main/res/drawable/btn_fb_pressed.xml" value="0.26974358974358975" />
+        <entry key="app/src/main/res/drawable/btn_general_normal.xml" value="0.26974358974358975" />
+        <entry key="app/src/main/res/drawable/overlay_auth_screen.xml" value="0.26974358974358975" />
+        <entry key="app/src/main/res/layout/activity_collect.xml" value="0.2490740740740741" />
+        <entry key="app/src/main/res/layout/activity_hunt.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.2490740740740741" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/dialog_game_menu.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/dialog_user_details.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/screen_loading.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/screen_starting.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/view_avatar.xml" value="0.375" />
       </map>
     </option>
   </component>

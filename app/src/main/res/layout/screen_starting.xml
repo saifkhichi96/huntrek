@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/cover"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,7 +20,7 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
-      <com.aspirasoft.huntrek.view.AnnotatedProgressBar
+        <com.aspirasoft.huntrek.view.AnnotatedProgressBar
             android:id="@+id/progress"
             style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="150dp"
