@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.aspirasoft.huntrek">
+    package="dev.aspirasoft.huntrek">
 
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
         android:normalScreens="true"
         android:smallScreens="true"
-        android:xlargeScreens="true"/>
+        android:xlargeScreens="true" />
 
     <uses-feature
         android:name="android.hardware.location.gps"
@@ -20,16 +20,16 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
-    <uses-feature android:glEsVersion="0x00020000"/>
+    <uses-feature android:glEsVersion="0x00020000" />
     <uses-feature
         android:name="android.hardware.touchscreen"
-        android:required="false"/>
+        android:required="false" />
     <uses-feature
         android:name="android.hardware.touchscreen.multitouch"
-        android:required="false"/>
+        android:required="false" />
     <uses-feature
         android:name="android.hardware.touchscreen.multitouch.distinct"
-        android:required="false"/>
+        android:required="false" />
 
     <application
         android:name=".HuntItApp"
@@ -40,45 +40,43 @@
         tools:replace="android:label"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute">
         <activity
-            android:name=".activity.ActivitySplash"
-            android:exported="true"
-            android:screenOrientation="portrait">
+            android:name=".ui.activity.ActivitySplash"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.activity.ActivityHunt" />
+
+        <activity android:name=".ui.activity.ActivitySignIn" />
+
+        <activity android:name=".ui.activity.ActivitySignUp" />
+
         <activity
-            android:name=".activity.ActivityHunt"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.ActivitySignIn"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.ActivityCollect"
+            android:name=".ui.activity.ActivityCollect"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
-            android:launchMode="standard"
-            android:screenOrientation="portrait">
+            android:launchMode="standard">
             <meta-data
                 android:name="unityplayer.UnityActivity"
-                android:value="true"/>
+                android:value="true" />
         </activity>
 
         <meta-data
             android:name="unity.build-id"
-            android:value="c3a5c8ad-377f-4bc0-ac94-ed7212c1b063"/>
+            android:value="c3a5c8ad-377f-4bc0-ac94-ed7212c1b063" />
         <meta-data
             android:name="unity.splash-mode"
-            android:value="0"/>
+            android:value="0" />
         <meta-data
             android:name="unity.splash-enable"
-            android:value="False"/>
+            android:value="False" />
         <meta-data
             android:name="android.max_aspect"
-            android:value="2.1"/>
+            android:value="2.1" />
 
-        <activity android:name=".activity.ActivitySignUp"/>
     </application>
 
 </manifest>

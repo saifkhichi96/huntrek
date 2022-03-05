@@ -7,7 +7,7 @@
     android:background="@android:color/white"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".activity.ActivityCollect">
+    tools:context=".ui.activity.ActivityCollect">
 
     <FrameLayout
         android:id="@+id/unityPlayerView"
@@ -58,7 +58,7 @@
         app:iconSize="48dp"
         app:iconTint="@null" />
 
-    <com.aspirasoft.huntrek.view.LoadingAnimation
+    <dev.aspirasoft.huntrek.ui.view.LoadingAnimation
         android:id="@+id/pauseScreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

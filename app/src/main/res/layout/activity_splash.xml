@@ -6,7 +6,7 @@
     android:background="@android:color/white"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".activity.ActivitySplash">
+    tools:context=".ui.activity.ActivitySplash">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="150dp"
