@@ -28,7 +28,7 @@
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
-        <dev.aspirasoft.huntrek.ui.view.AnnotatedProgressBar
+        <dev.aspirasoft.huntit.ui.view.AnnotatedProgressBar
             android:id="@+id/progress"
             style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="150dp"
