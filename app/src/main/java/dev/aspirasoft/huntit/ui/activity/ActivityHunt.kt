@@ -25,7 +25,6 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import dev.aspirasoft.huntit.HuntItApp
 import dev.aspirasoft.huntit.R
 import dev.aspirasoft.huntit.data.repo.AuthRepository
-import dev.aspirasoft.huntit.data.repo.AuthRepository.signIn
 import dev.aspirasoft.huntit.data.repo.TreasureRepository.all
 import dev.aspirasoft.huntit.data.repo.TreasureRepository.get
 import dev.aspirasoft.huntit.data.repo.TreasureRepository.pop
@@ -45,6 +44,8 @@ import kotlin.math.roundToInt
 @Suppress("DEPRECATION")
 class ActivityHunt : AppCompatActivity(), View.OnClickListener, OnMapReadyCallback, OnMarkerClickListener,
     TimeListener {
+
+    private lateinit var repo: AuthRepository
 
     private lateinit var mGame: Game
     private lateinit var mGameMap: MapboxMap
@@ -66,8 +67,10 @@ class ActivityHunt : AppCompatActivity(), View.OnClickListener, OnMapReadyCallba
         decorView.systemUiVisibility = uiOptions
         setContentView(R.layout.activity_hunt)
 
+        repo = AuthRepository()
+
         // Check that user is logged in
-        val currentUser = AuthRepository.currentUser
+        val currentUser = repo.currentUser
         if (currentUser == null) {
             startActivity(Intent(this, ActivitySignIn::class.java))
             finish()
@@ -214,7 +217,7 @@ class ActivityHunt : AppCompatActivity(), View.OnClickListener, OnMapReadyCallba
             }
             R.id.settingsButton -> mDialogGameMenu.show()
             R.id.button_sign_out -> {
-                AuthRepository.signOut()
+                repo.signOut()
                 startActivity(Intent(applicationContext, ActivitySignIn::class.java))
                 overridePendingTransition(0, 0)
                 finish()
@@ -223,7 +226,7 @@ class ActivityHunt : AppCompatActivity(), View.OnClickListener, OnMapReadyCallba
     }
 
     fun signOut() {
-        AuthRepository.signOut()
+        repo.signOut()
         startActivity(Intent(applicationContext, ActivitySignIn::class.java))
         overridePendingTransition(0, 0)
         finish()
@@ -281,7 +284,7 @@ class ActivityHunt : AppCompatActivity(), View.OnClickListener, OnMapReadyCallba
         if (chest != null) {
             Log.i(HuntItApp.TAG, "Received " + chest.value + " coins from chest # " + id)
             mGame.player.addPoints(chest.value)
-            mGame.player.info.chestsOpened++
+            mGame.player.info.treasuresFound++
         } else {
             Log.e(HuntItApp.TAG, "Could not read chest # $id")
         }
@@ -339,7 +342,8 @@ class ActivityHunt : AppCompatActivity(), View.OnClickListener, OnMapReadyCallba
             mPlayerStatsView.setAvatar(mGame.player.view.faceDrawable)
             mPlayerStatsView.setUserName(mGame.player.info.name)
             updateUserStats()
-            signIn(mGame.player.info)
+
+            repo.saveSignIn(mGame.player.info)
         }
 
         @UiThread
@@ -412,8 +416,8 @@ class ActivityHunt : AppCompatActivity(), View.OnClickListener, OnMapReadyCallba
         }
 
         private fun updateUserStats() {
-            mPlayerStatsView.setXP(mGame.player.info.checkCurrentXP())
-            mPlayerStatsView.setLevel(mGame.player.info.checkLevel())
+            mPlayerStatsView.setXP(mGame.player.info.currentXP)
+            mPlayerStatsView.setLevel(mGame.player.info.level)
         }
     }
 

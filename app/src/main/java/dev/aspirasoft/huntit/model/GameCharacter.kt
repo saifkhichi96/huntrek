@@ -12,7 +12,7 @@ import dev.aspirasoft.huntit.ui.view.GameCharacterView
  * movement and the character's actions.
  *
  * The character's view is a [GameCharacterView] object. It is responsible for drawing
- * the character on the screen. The character's state is a [GameCharacterState] object.
+ * the character on the screen. The character's state is a [GameCharacterInfo] object.
  * It is responsible for handling the character's state.
  *
  * The character's movement depends on its GPS location, which is handled by the
@@ -26,11 +26,11 @@ import dev.aspirasoft.huntit.ui.view.GameCharacterView
 class GameCharacter(
     context: Context,
     val view: GameCharacterView,
-    val info: GameCharacterState,
+    val info: GameCharacterInfo,
 ) : LocatableCharacter(context) {
 
     init {
-        view.setCharacterType(info.characterType)
+        view.createCharacterSprite(info.type)
     }
 
     /**
@@ -63,7 +63,7 @@ class GameCharacter(
      * Add some points to the player's score.
      */
     fun addPoints(points: Int) {
-        info.score += points
+        info.totalXP += points
     }
 
 }

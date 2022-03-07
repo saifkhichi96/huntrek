@@ -22,7 +22,7 @@ import kotlin.math.roundToInt
  */
 class Game(
     private val context: Activity,
-    currentUser: GameCharacterState,
+    currentUser: GameCharacterInfo,
 ) : GameCore(), FrameRefreshListener, GamePauseListener, GameOverListener {
 
     /**

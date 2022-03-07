@@ -9,14 +9,14 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import dev.aspirasoft.huntit.R
-import dev.aspirasoft.huntit.model.GameCharacterState
+import dev.aspirasoft.huntit.model.GameCharacterInfo
 
 /**
  * Created by saifkhichi96 on 04/01/2018.
  */
 class DialogUserDetails(context: Context, themeResId: Int) : Dialog(context, themeResId), View.OnClickListener {
 
-    private var gameCharacterState: GameCharacterState? = null
+    private var gameCharacterInfo: GameCharacterInfo? = null
     private var mCharacterImage: Drawable? = null
 
     override fun onCreate(savedInstanceState: Bundle) {
@@ -27,16 +27,16 @@ class DialogUserDetails(context: Context, themeResId: Int) : Dialog(context, the
     }
 
     fun updateUI() {
-        if (gameCharacterState != null) {
+        if (gameCharacterInfo != null) {
             val mUserNameView = findViewById<TextView>(R.id.user_name)
-            mUserNameView.text = gameCharacterState!!.name
+            mUserNameView.text = gameCharacterInfo!!.name
             val mUserEmailView = findViewById<TextView>(R.id.userEmail)
-            mUserEmailView.text = gameCharacterState!!.email
+            mUserEmailView.text = gameCharacterInfo!!.email
             val mChestCountView = findViewById<TextView>(R.id.chestsOpened)
-            mChestCountView.text = gameCharacterState!!.chestsOpened.toString()
+            mChestCountView.text = gameCharacterInfo!!.treasuresFound.toString()
             val mCoinCountView = findViewById<TextView>(R.id.coinsCollected)
-            mCoinCountView.text = gameCharacterState!!.score.toString()
-            val totalXP = gameCharacterState!!.checkTotalXP()
+            mCoinCountView.text = gameCharacterInfo!!.totalXP.toString()
+            val totalXP = gameCharacterInfo!!.totalXP
             val targetXP = 100
             val userXP = totalXP % targetXP
             val level = totalXP / targetXP + 1
@@ -58,8 +58,8 @@ class DialogUserDetails(context: Context, themeResId: Int) : Dialog(context, the
         }
     }
 
-    fun setUser(gameCharacterState: GameCharacterState?) {
-        this.gameCharacterState = gameCharacterState
+    fun setUser(gameCharacterInfo: GameCharacterInfo?) {
+        this.gameCharacterInfo = gameCharacterInfo
     }
 
     override fun onClick(v: View) {

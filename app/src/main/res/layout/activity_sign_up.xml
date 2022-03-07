@@ -7,21 +7,11 @@
     android:background="@drawable/bg_auth"
     android:theme="@style/GameTheme.Dark">
 
-    <!-- Logo -->
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:alpha="0.05"
-        android:scaleType="centerInside"
-        android:src="@drawable/ic_logo"
-        android:tint="@color/overlayDawn" />
-
     <!-- Overlay -->
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.85"
+        android:alpha="0.75"
         android:background="@drawable/overlay_auth_screen" />
 
     <!-- Complete Profile -->

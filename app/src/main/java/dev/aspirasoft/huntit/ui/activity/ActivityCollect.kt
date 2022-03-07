@@ -21,14 +21,18 @@ import kotlinx.android.synthetic.main.activity_collect.*
 
 class ActivityCollect : FullScreenActivity(), View.OnClickListener {
 
+    private lateinit var repo: AuthRepository
+
     private lateinit var mUnityPlayer: UnityPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_collect)
 
+        repo = AuthRepository()
+
         // Check that user is logged in
-        if (!AuthRepository.isSignedIn) {
+        if (!repo.isSignedIn) {
             finish()
             return
         }

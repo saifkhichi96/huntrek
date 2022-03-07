@@ -10,10 +10,12 @@ import com.google.firebase.auth.FirebaseAuth
 import dev.aspirasoft.huntit.HuntItApp
 import dev.aspirasoft.huntit.R
 import dev.aspirasoft.huntit.data.repo.AuthRepository
-import dev.aspirasoft.huntit.data.repo.AuthRepository.RegistrationCallback
-import dev.aspirasoft.huntit.model.GameCharacterState
+import dev.aspirasoft.huntit.model.GameCharacterInfo
+import dev.aspirasoft.huntit.model.characters.CharacterType
 
-class ActivitySignUp : FullScreenActivity(), View.OnClickListener, RegistrationCallback {
+class ActivitySignUp : FullScreenActivity(), View.OnClickListener, AuthRepository.RegistrationCallback {
+
+    private lateinit var repo: AuthRepository
 
     private var mNameInputView: TextInputEditText? = null
     private var mEmailInputView: TextInputEditText? = null
@@ -22,6 +24,8 @@ class ActivitySignUp : FullScreenActivity(), View.OnClickListener, RegistrationC
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
+
+        repo = AuthRepository()
 
         // Assign views
         mWaitingViews = findViewById(R.id.waitingViews)
@@ -54,11 +58,13 @@ class ActivitySignUp : FullScreenActivity(), View.OnClickListener, RegistrationC
         try {
             mWaitingViews!!.visibility = View.VISIBLE
             val userId = FirebaseAuth.getInstance().currentUser!!.uid
-            val user = GameCharacterState()
-            user.firebaseId = userId
-            user.name = name
-            user.email = email
-            AuthRepository.signUp(userId, user, this)
+            val user = GameCharacterInfo(
+                id = userId,
+                name = name,
+                email = email,
+                type = CharacterType.BARMAN
+            )
+            repo.signUp(userId, user, this)
         } catch (ex: NullPointerException) {
             mWaitingViews!!.visibility = View.GONE
             Log.e(HuntItApp.TAG, "No firebase user active. Cannot complete sign up.")
@@ -74,11 +80,12 @@ class ActivitySignUp : FullScreenActivity(), View.OnClickListener, RegistrationC
         return email.isNotEmpty()
     }
 
-    override fun onRegistrationComplete(user: GameCharacterState) {
+    override fun onRegistrationComplete(user: GameCharacterInfo) {
         mWaitingViews!!.visibility = View.GONE
-        AuthRepository.signIn(user)
-        startActivity(Intent(applicationContext, ActivityHunt::class.java))
-        overridePendingTransition(0, 0)
+        repo.saveSignIn(user)
+
+        val intent = Intent(this@ActivitySignUp, ActivityHunt::class.java)
+        startActivity(intent)
         finish()
     }
 

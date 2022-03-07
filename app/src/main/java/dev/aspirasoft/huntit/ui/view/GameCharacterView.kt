@@ -8,99 +8,75 @@ import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.drawee.controller.BaseControllerListener
 import com.facebook.drawee.view.SimpleDraweeView
 import com.facebook.imagepipeline.image.ImageInfo
-import dev.aspirasoft.huntit.R
-import dev.aspirasoft.huntit.model.characters.Barkeep
-import dev.aspirasoft.huntit.model.characters.Barmaid
-import dev.aspirasoft.huntit.model.characters.CharacterSprite
-import dev.aspirasoft.huntit.model.characters.IndonesianKid
+import dev.aspirasoft.huntit.model.characters.*
 
 class GameCharacterView : SimpleDraweeView {
 
-    private var sprite: CharacterSprite? = null
-    private var characterType = 0
+    constructor(context: Context?) : super(context)
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
+    constructor(context: Context, attrs: AttributeSet?, defStyle: Int) : super(context, attrs, defStyle)
+
+    /**
+     * The character's sprite.
+     *
+     * By default, we use the BARMAN sprite.
+     * @see [CharacterSprite]
+     */
+    private var sprite: CharacterSprite = createCharacterSprite(CharacterType.BARMAN)
+
+    /**
+     * Is the character walking?
+     */
     private var isWalking = false
 
-    constructor(context: Context?) : super(context) {
-        init(0)
-    }
+    val characterDrawable: Drawable?
+        get() = sprite.getFullDrawable(context)
 
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-        val a = context.theme.obtainStyledAttributes(
-            attrs,
-            R.styleable.GamePlayerView,
-            0, 0)
-        characterType = try {
-            a.getInteger(R.styleable.GamePlayerView_character_type, 0)
-        } finally {
-            a.recycle()
-        }
-        init(characterType)
-    }
+    val faceDrawable: Drawable?
+        get() = sprite.getFaceDrawable(context)
 
-    constructor(context: Context, attrs: AttributeSet?, defStyle: Int) : super(context, attrs, defStyle) {
-        val a = context.theme.obtainStyledAttributes(
-            attrs,
-            R.styleable.GamePlayerView,
-            0, 0)
-        characterType = try {
-            a.getInteger(R.styleable.GamePlayerView_character_type, 0)
-        } finally {
-            a.recycle()
+    /**
+     * Creates a new [CharacterSprite] based on the [type] of the character.
+     *
+     * @param type The type of the character.
+     */
+    fun createCharacterSprite(type: CharacterType): CharacterSprite {
+        this.sprite = when (type) {
+            CharacterType.BARMAN -> Barkeep()
+            CharacterType.BARMAID -> Barmaid()
+            CharacterType.INDONESIAN_KID -> IndonesianKid()
         }
-        init(characterType)
-    }
 
-    fun setCharacterType(characterType: Int) {
-        this.characterType = characterType
-        if (this.characterType >= 3) {
-            this.characterType = 0
-        }
-        sprite = when (this.characterType) {
-            0 -> Barkeep()
-            1 -> Barmaid()
-            2 -> IndonesianKid()
-            else -> Barkeep()
-        }
         this.controller = Fresco.newDraweeControllerBuilder()
             .setControllerListener(AnimationController())
             .build()
-        this.setImageURI(sprite!!.walkingAnimUri)
+
+        setImageURI(sprite.walkingAnimUri)  // fixme: replace deprecated method
+        return sprite
     }
 
-    fun init(characterType: Int) {
-        isWalking = false
-        setCharacterType(characterType)
-    }
-
+    /**
+     * Starts the walking animation.
+     */
     fun startWalking() {
         if (!isWalking) {
-            if (this.controller != null && this.controller!!.animatable != null) {
-                this.controller!!.animatable.start()
-                isWalking = true
-            }
+            this.controller?.animatable?.start()
+            isWalking = true
         }
     }
 
+    /**
+     * Stops the walking animation.
+     */
     fun stopWalking() {
         if (isWalking) {
-            if (this.controller != null && this.controller!!.animatable != null) {
-                this.controller!!.animatable.stop()
-                isWalking = false
-            }
+            this.controller?.animatable?.stop()
+            isWalking = false
         }
     }
 
-    val characterDrawable: Drawable?
-        get() = sprite!!.getFullDrawable(context)
-
-    val faceDrawable: Drawable?
-        get() = sprite!!.getFaceDrawable(context)
-
     private inner class AnimationController : BaseControllerListener<ImageInfo?>() {
-        override fun onFinalImageSet(
-            id: String, imageInfo: ImageInfo?,
-            anim: Animatable?,
-        ) {
+        override fun onFinalImageSet(id: String, imageInfo: ImageInfo?, anim: Animatable?) {
             anim?.stop()
         }
     }

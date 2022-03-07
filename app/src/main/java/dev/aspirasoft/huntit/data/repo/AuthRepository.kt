@@ -1,61 +1,49 @@
 package dev.aspirasoft.huntit.data.repo
 
 import android.util.Log
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 import dev.aspirasoft.huntit.HuntItApp
+import dev.aspirasoft.huntit.data.source.AuthDataSource
 import dev.aspirasoft.huntit.data.source.DataSource
-import dev.aspirasoft.huntit.model.GameCharacterState
+import dev.aspirasoft.huntit.model.GameCharacterInfo
 
 /**
  * Created by saifkhichi96 on 03/01/2018.
  */
-object AuthRepository {
+class AuthRepository {
 
-    private val dataSource: DataSource = DataSource
+    private val dataSource = AuthDataSource()
 
-    val firebaseAuth = FirebaseAuth.getInstance()
+    private val cache: DataSource = DataSource
 
-    val currentUser: GameCharacterState?
-        get() = dataSource.get("activeUser", GameCharacterState::class.java)
-
-    val currentFirebaseUser: FirebaseUser?
-        get() = firebaseAuth.currentUser
+    val currentUser: GameCharacterInfo?
+        get() = cache.get("activeUser", GameCharacterInfo::class.java)
 
     val isSignedIn: Boolean
         get() {
-            val signedIn = dataSource.get("signedIn", Boolean::class.java, false) ?: false
-            val userExists = currentUser != null && currentFirebaseUser != null
-            return signedIn.and(userExists)
+            val signedIn = cache.get("signedIn", Boolean::class.java, false) ?: false
+            val userExists = currentUser != null
+            return signedIn && userExists
         }
 
-    fun isRegistered(userId: String, callback: RegistrationQueryCallback) {
-        dataSource.remoteDb.child("users").orderByKey().equalTo(userId)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    callback.onResponseReceived(dataSnapshot.value != null)
-                }
-
-                override fun onCancelled(databaseError: DatabaseError) {}
-            })
+    fun saveSignIn(user: GameCharacterInfo) {
+        cache.put("activeUser", user)
+        cache.put("signedIn", true)
     }
 
-    fun signIn(user: GameCharacterState) {
-        dataSource.put("activeUser", user)
-        dataSource.put("signedIn", true)
+    suspend fun signIn(email: String, password: String): GameCharacterInfo? {
+        val userInfo = dataSource.signIn(email, password)
+        if (userInfo != null) saveSignIn(userInfo)
+        return userInfo
     }
 
     fun signOut() {
-        firebaseAuth.signOut()
-        dataSource.remove("activeUser")
-        dataSource.put("signedIn", false)
+        dataSource.signOut()
+        cache.remove("activeUser")
+        cache.put("signedIn", false)
     }
 
-    fun signUp(userId: String, user: GameCharacterState, callback: RegistrationCallback) {
-        dataSource.remoteDb.child("users").child(userId).setValue(user)
+    fun signUp(userId: String, user: GameCharacterInfo, callback: RegistrationCallback) {
+        cache.remoteDb.child("users").child(userId).setValue(user)
             .addOnSuccessListener { callback.onRegistrationComplete(user) }
             .addOnFailureListener {
                 Log.e(HuntItApp.TAG, it.message ?: "User registration failed.")
@@ -64,20 +52,16 @@ object AuthRepository {
 
     fun setScore(score: Int) {
         if (currentUser != null) {
-            dataSource.remoteDb
+            cache.remoteDb
                 .child("users")
-                .child(currentUser?.firebaseId!!)
+                .child(currentUser!!.id)
                 .child("score")
                 .setValue(score)
         }
     }
 
     interface RegistrationCallback {
-        fun onRegistrationComplete(user: GameCharacterState)
-    }
-
-    interface RegistrationQueryCallback {
-        fun onResponseReceived(isRegistered: Boolean)
+        fun onRegistrationComplete(user: GameCharacterInfo)
     }
 
 }
