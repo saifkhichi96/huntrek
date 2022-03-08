@@ -4,13 +4,11 @@ import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
 import com.google.firebase.auth.FirebaseAuth
 import dev.aspirasoft.huntit.R
 import dev.aspirasoft.huntit.data.repo.AuthRepository
 import dev.aspirasoft.huntit.model.AuthStatus
-import dev.aspirasoft.huntit.utils.CameraPermissionUtil
-import dev.aspirasoft.huntit.utils.PermissionUtil
+import dev.aspirasoft.huntit.utils.LocationPermissionUtil
 import java.util.*
 
 
@@ -35,32 +33,21 @@ class ActivitySplash : FullScreenActivity() {
     override fun onResume() {
         super.onResume()
         // ARCoreUtil.checkAndInstall(this)
-        when (PermissionUtil.checkAllGranted(this, permissions)) {
+        when (LocationPermissionUtil.hasLocationPermissions(this)) {
             true -> mGameLaunchTask.startDelayed()
-            false -> ActivityCompat.requestPermissions(this, permissions, LOCATION_REQUEST_CODE)
+            false -> LocationPermissionUtil.askLocationPermissions(this)
         }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
-            LOCATION_REQUEST_CODE -> when (PermissionUtil.checkAllGranted(this, permissions)) {
-                true -> mGameLaunchTask.startDelayed()
-                false -> finish() // todo: permission denied. handle this situation
+            LocationPermissionUtil.LOCATION_PERMISSION_CODE -> {
+                when (LocationPermissionUtil.hasLocationPermissions(this)) {
+                    true -> mGameLaunchTask.startDelayed()
+                    false -> onLocationPermissionDenied()
+                }
             }
-        }
-
-        if (!CameraPermissionUtil.hasCameraPermission(this)) {
-            Toast.makeText(
-                this,
-                "Camera permission is needed to run this application",
-                Toast.LENGTH_LONG
-            ).show()
-            if (!CameraPermissionUtil.shouldShowRequestPermissionRationale(this)) {
-                // Permission denied with checking "Do not ask again".
-                CameraPermissionUtil.launchPermissionSettings(this)
-            }
-            finish()
         }
     }
 
@@ -68,21 +55,7 @@ class ActivitySplash : FullScreenActivity() {
         Toast.makeText(this,
             "Location permission is needed to run this application",
             Toast.LENGTH_LONG).show()
-        if (!CameraPermissionUtil.shouldShowRequestPermissionRationale(this)) {
-            // Permission denied with checking "Do not ask again".
-            CameraPermissionUtil.launchPermissionSettings(this)
-        }
-        finish()
-    }
-
-    private fun onCameraPermissionDenied() {
-        Toast.makeText(this,
-            "Camera permission not granted",
-            Toast.LENGTH_LONG).show()
-        if (!CameraPermissionUtil.shouldShowRequestPermissionRationale(this)) {
-            // Permission denied with checking "Do not ask again".
-            CameraPermissionUtil.launchPermissionSettings(this)
-        }
+        // todo: provide a way to turn on location permissions
         finish()
     }
 

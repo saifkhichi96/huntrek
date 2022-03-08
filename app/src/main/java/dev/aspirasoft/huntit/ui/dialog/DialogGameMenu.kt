@@ -14,7 +14,7 @@ class DialogGameMenu(context: Context, themeResId: Int) : Dialog(context, themeR
 
     private var gameActivity: ActivityHunt? = null
 
-    override fun onCreate(savedInstanceState: Bundle) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dialog_game_menu)
 

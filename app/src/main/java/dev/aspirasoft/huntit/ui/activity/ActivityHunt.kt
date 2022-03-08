@@ -11,7 +11,6 @@ import android.view.View
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.mapboxsdk.annotations.IconFactory
 import com.mapbox.mapboxsdk.annotations.Marker
 import com.mapbox.mapboxsdk.annotations.MarkerOptions
@@ -97,10 +96,10 @@ class ActivityHunt : AppCompatActivity(), View.OnClickListener, OnMapReadyCallba
         findViewById<View>(R.id.button_sign_out).setOnClickListener(this)
 
         // Configure the Mapbox map
-        Mapbox.getInstance(applicationContext, getString(R.string.mapbox_token))
         mMapView = findViewById(R.id.map)
         mMapView.onCreate(savedInstanceState)
         mMapView.getMapAsync(this)
+        onDayBreak()
 
         // Create dialogs
         mDialogGameMenu = DialogGameMenu(this, R.style.DialogTheme)
@@ -351,7 +350,7 @@ class ActivityHunt : AppCompatActivity(), View.OnClickListener, OnMapReadyCallba
             update()
 
             if (!mGame.isOver) {
-                Handler().postDelayed({ runOnUiThread(::update) }, 100)
+                Handler().postDelayed({ runOnUiThread(::loop) }, 100)
             }
         }
 
@@ -400,11 +399,14 @@ class ActivityHunt : AppCompatActivity(), View.OnClickListener, OnMapReadyCallba
             findViewById<View>(R.id.pauseScreen).visibility = View.GONE
 
             mGameMap.moveCamera(CameraUpdateFactory.newCameraPosition(CameraPosition.Builder()
-                .target(getPlayerLocation())
+                .target(/*getPlayerLocation()*/mGame.player.position)
                 .zoom(18.5)
                 .tilt(60.0)
                 .bearing(mGame.player.direction.toDouble())
                 .build()))
+
+            Log.d(HuntItApp.TAG,
+                "Player location: ${mGame.player.position.latitude}, ${mGame.player.position.longitude}")
         }
 
         private fun showPaused() {

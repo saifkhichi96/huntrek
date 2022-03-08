@@ -28,20 +28,6 @@ import dev.aspirasoft.huntit.data.LocationProvider.LocationProvider
  */
 class LocationProvider(context: Context) {
 
-    init {
-        // Get location service
-        val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-
-        // At least one provider must be available
-        val isGPSAvailable = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-        val isNetworkAvailable = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
-        check(isGPSAvailable || isNetworkAvailable) { "No location provider available." }
-
-        // Subscribe to all available location providers
-        if (isGPSAvailable) registerProvider(context, LocationManager.GPS_PROVIDER)
-        if (isNetworkAvailable) registerProvider(context, LocationManager.NETWORK_PROVIDER)
-    }
-
     /**
      * List of available location providers.
      */
@@ -66,6 +52,20 @@ class LocationProvider(context: Context) {
                 else -> knownProviders.values.firstOrNull { it.lastKnownLocation != null }?.lastKnownLocation
             }
         }
+
+    init {
+        // Get location service
+        val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+        // At least one provider must be available
+        val isGPSAvailable = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+        val isNetworkAvailable = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+        check(isGPSAvailable || isNetworkAvailable) { "No location provider available." }
+
+        // Subscribe to all available location providers
+        if (isGPSAvailable) registerProvider(context, LocationManager.GPS_PROVIDER)
+        if (isNetworkAvailable) registerProvider(context, LocationManager.NETWORK_PROVIDER)
+    }
 
     /**
      * Registers a new location provider.

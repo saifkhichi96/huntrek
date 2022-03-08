@@ -3,27 +3,21 @@ package dev.aspirasoft.huntit.ui.view
 import android.content.Context
 import android.os.Bundle
 import android.util.AttributeSet
-import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.mapboxsdk.annotations.PolylineOptions
 import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import dev.aspirasoft.huntit.BuildConfig
-import dev.aspirasoft.huntit.R
 import dev.aspirasoft.huntit.listener.MapListener
 
 class GameMapView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : MapView(context, attrs, defStyleAttr),
     OnMapReadyCallback {
 
-    private var mapListener: MapListener? = null
-
-    init {
-        Mapbox.getInstance(context, context.getString(R.string.mapbox_token))
-    }
-
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
     constructor(context: Context) : this(context, null)
+
+    private var mapListener: MapListener? = null
 
     private val boundary: PolylineOptions
         get() = PolylineOptions()

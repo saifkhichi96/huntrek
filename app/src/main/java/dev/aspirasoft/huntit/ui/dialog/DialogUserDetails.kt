@@ -19,7 +19,7 @@ class DialogUserDetails(context: Context, themeResId: Int) : Dialog(context, the
     private var gameCharacterInfo: GameCharacterInfo? = null
     private var mCharacterImage: Drawable? = null
 
-    override fun onCreate(savedInstanceState: Bundle) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dialog_user_details)
         findViewById<View>(R.id.dismissButton).setOnClickListener(this)
